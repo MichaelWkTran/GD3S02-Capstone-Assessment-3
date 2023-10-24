@@ -157,7 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 1.5
-  m_projectile: {fileID: 1413425354788742408, guid: 4896354f663c14847a6c8e5112e602fb, type: 3}
+  m_projectile: {fileID: 1413425354788742408, guid: 4896354f663c14847a6c8e5112e602fb,
+    type: 3}
   m_projectileSpeed: 5
   m_projectileLifetime: 1
   m_projectileYOffset: 0.12
