@@ -15,12 +15,6 @@ public class Player : MonoBehaviour
 
     [Header("Game Mode")]
     public uint m_playerIndex;
-    string m_horizontalInput =  "Horizontal";
-    string m_verticalInput =    "Vertical";
-    string m_shootX =           "Shoot Horizontal";
-    string m_shootY =           "Shoot Vertical";
-    string m_interactInput =    "Interact";
-    Vector2 m_shootVector;
 
     [Header("Inputs")]
     [SerializeField] PlayerInput m_playerInput;
@@ -29,6 +23,7 @@ public class Player : MonoBehaviour
     InputAction m_shootButtonAction;
     InputAction m_interactAction;
     InputAction m_cancelAction;
+    Vector2 m_shootVector;
 
     [Header("Components")]
     [SerializeField] SpriteRenderer m_spriteRenderer;
@@ -43,7 +38,7 @@ public class Player : MonoBehaviour
         m_interactAction = m_playerInput.actions["Interact"];
         m_cancelAction = m_playerInput.actions["Cancel"];
 
-        //
+        //Swap to Keyboard and Mouse
         if (m_playerIndex == 0U)
         {
             m_playerInput.SwitchCurrentControlScheme
@@ -52,13 +47,6 @@ public class Player : MonoBehaviour
                 InputSystem.devices.Where (device => device.layout.Contains("Mouse") || device.layout.Contains("Keyboard")).ToArray()
             );
         }
-
-        //Set Up Inputs
-        //m_horizontalInput = 'P' + m_playerIndex.ToString() + ' ' + m_horizontalInput;
-        //m_verticalInput =   'P' + m_playerIndex.ToString() + ' ' + m_verticalInput;
-        //m_shootX =          'P' + m_playerIndex.ToString() + ' ' + m_shootX;
-        //m_shootY =          'P' + m_playerIndex.ToString() + ' ' + m_shootY;
-        //m_interactInput =   'P' + m_playerIndex.ToString() + ' ' + m_interactInput;
     }
 
     void Update()
