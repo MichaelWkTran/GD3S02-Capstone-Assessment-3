@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1962718443384718140}
+  - component: {fileID: 4405909500314049239}
   - component: {fileID: 5504781652266454827}
   - component: {fileID: 4178814106695373162}
   - component: {fileID: 4628060752859133120}
-  - component: {fileID: 4405909500314049239}
   - component: {fileID: 5184324112154802437}
+  - component: {fileID: 3364670736458685677}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -36,6 +37,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4405909500314049239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665180551401987172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecea7ea66b320ac4ca1a645e9477f8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 1.5
+  m_projectile: {fileID: 1413425354788742408, guid: 4896354f663c14847a6c8e5112e602fb, type: 3}
+  m_projectileSpeed: 5
+  m_projectileLifetime: 1
+  m_projectileYOffset: 0.12
+  m_playerIndex: 0
+  m_playerInput: {fileID: 3364670736458685677}
+  m_spriteRenderer: {fileID: 5504781652266454827}
+  m_animator: {fileID: 4628060752859133120}
+  m_rigidbody: {fileID: 5184324112154802437}
 --- !u!212 &5504781652266454827
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56,7 +79,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8ce682e9a581ebf4188a99b0e2520781, type: 2}
+  - {fileID: 2100000, guid: 6515d2e9121251a46a3144d9018f2b6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,26 +167,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4405909500314049239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4665180551401987172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecea7ea66b320ac4ca1a645e9477f8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_speed: 1.5
-  m_projectile: {fileID: 1413425354788742408, guid: 4896354f663c14847a6c8e5112e602fb, type: 3}
-  m_projectileSpeed: 5
-  m_projectileLifetime: 1
-  m_projectileYOffset: 0.12
-  m_spriteRenderer: {fileID: 5504781652266454827}
-  m_animator: {fileID: 4628060752859133120}
-  m_rigidbody: {fileID: 5184324112154802437}
 --- !u!50 &5184324112154802437
 Rigidbody2D:
   serializedVersion: 4
@@ -191,3 +194,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3364670736458685677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665180551401987172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7cebc9a405a40cd4798eaa67ff29800e, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Game Pad
+  m_DefaultActionMap: Overworld
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
