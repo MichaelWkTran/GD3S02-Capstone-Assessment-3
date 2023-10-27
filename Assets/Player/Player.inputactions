@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "dfa58907-3824-4ee8-b3f8-8cd034122d8c",
                     "expectedControlType": "Vector2",
-                    "processors": "NormalizeVector2",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -179,7 +179,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -190,7 +190,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -201,7 +201,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -212,7 +212,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -234,7 +234,7 @@
                     "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -245,7 +245,7 @@
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -256,7 +256,7 @@
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -267,7 +267,7 @@
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -300,7 +300,7 @@
                     "path": "<DualShockGamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -322,7 +322,7 @@
                     "path": "<DualShockGamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -330,7 +330,7 @@
                 {
                     "name": "Right Stick",
                     "id": "49dd3088-25fa-4178-a187-0c9fec33223f",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -344,7 +344,7 @@
                     "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Shoot Vector",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -355,7 +355,7 @@
                     "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Shoot Vector",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -366,7 +366,7 @@
                     "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Shoot Vector",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -377,7 +377,7 @@
                     "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game Pad",
                     "action": "Shoot Vector",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -389,12 +389,29 @@
         {
             "name": "Player 1 Keyboard and Mouse",
             "bindingGroup": "Player 1 Keyboard and Mouse",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         },
         {
             "name": "Game Pad",
             "bindingGroup": "Game Pad",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }
