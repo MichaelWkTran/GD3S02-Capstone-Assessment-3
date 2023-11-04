@@ -12,7 +12,8 @@ public class GameMode : MonoBehaviour
     [SerializeField] Player m_playerPrefab;
 
     public List<Player> m_players;
-    
+    public List<Tower> m_towers;
+
     public Vector2 m_startLocationOrigin;
     public Vector2[] m_startLocations;
 
@@ -104,6 +105,9 @@ public class GameMode : MonoBehaviour
                     break;
             }
         }
+
+        //Get Towers
+        m_towers = new List<Tower>(FindObjectsByType<Tower>(FindObjectsInactive.Include, FindObjectsSortMode.None));
     }
 
     public void OnPlayerKilled()

@@ -33,11 +33,11 @@ public class Player : MonoBehaviour
 
     [Header("Inputs")]
     [SerializeField] PlayerInput m_playerInput; public PlayerInput m_PlayerInput { get { return m_playerInput; } }
-    InputAction m_moveAction;
-    InputAction m_shootVectorAction;
-    InputAction m_shootButtonAction;
-    InputAction m_interactAction;
-    InputAction m_cancelAction;
+    public InputAction m_moveAction { get; private set; }
+    public InputAction m_shootVectorAction { get; private set; }
+    public InputAction m_shootButtonAction { get; private set; }
+    public InputAction m_interactAction { get; private set; }
+    public InputAction m_cancelAction { get; private set; }
     Vector2 m_shootVector;
 
     [Header("Components")]
@@ -53,6 +53,12 @@ public class Player : MonoBehaviour
         m_shootButtonAction = m_playerInput.actions["Shoot Button"];
         m_interactAction = m_playerInput.actions["Interact"];
         m_cancelAction = m_playerInput.actions["Cancel"];
+
+        foreach(var s in InputSystem.devices)
+        {
+            Debug.Log(s.name);
+            Debug.Log(s.deviceId);
+        }
     }
 
     void Update()
