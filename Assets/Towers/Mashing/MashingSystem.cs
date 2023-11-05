@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.DualShock;
 using UnityEngine.UI;
 #if UNITY_PS4
 using UnityEngine.PS4;
@@ -9,30 +6,33 @@ using UnityEngine.PS4;
 
 public class MashingSystem : MonoBehaviour
 {
-    [SerializeField] Player m_player;
-
+    [SerializeField] float m_progressRate;
+    
     public bool m_canMash = true;
 #if UNITY_PS4
     [SerializeField] Vector3 m_lastGyro;
     float m_minShakeDistance = 2;
 #endif
-    public UnityEvent m_mashed;
 
+    [SerializeField] Slider m_slider;
     [SerializeField] Image m_mashingButtonImage;
     [SerializeField] Sprite m_pressedSprite;
     [SerializeField] Sprite m_releasedprite;
     [SerializeField] Sprite m_cantMashSprite;
 
+    Tower m_tower;
+    
+    void Start()
+    {
+        m_tower = GetComponentInParent<Tower>();
+    }
+
     void Update()
     {
-        if (m_player == null) return;
+        if (m_tower.m_InteractingPlayer == null) return;
 
-        //Gamepad gamepad = m_player.m_PlayerInput.GetDevice<Gamepad>();
-        //m_player.m_PlayerInput
-        //var ss = Gyroscope.current.samplingFrequency;
-        bool holdButtonInput = m_player.m_interactAction.IsPressed();
-        bool pressButtonInput = m_player.m_interactAction.triggered;
-
+        bool holdButtonInput = m_tower.m_InteractingPlayer.m_interactAction.IsPressed();
+        bool pressButtonInput = m_tower.m_InteractingPlayer.m_interactAction.triggered;
 
 #if UNITY_PS4
     if (PS4Input.PadIsConnected(0))
@@ -46,7 +46,11 @@ public class MashingSystem : MonoBehaviour
 #endif
 
         //Add Mesh Score
-        if (pressButtonInput && m_canMash) { m_mashed.Invoke(); }
+        if (pressButtonInput && m_canMash)
+        {
+            m_slider.value += m_progressRate;
+            if (m_slider.value >= m_slider.maxValue) m_tower.OnCompleted();
+        }
 
         //Set Mash Sprite
         if (m_mashingButtonImage)

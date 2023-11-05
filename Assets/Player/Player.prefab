@@ -140,6 +140,7 @@ MonoBehaviour:
   m_projectileLifetime: 1
   m_projectileYOffset: 0.12
   m_playerIndex: 0
+  m_state: 0
   m_playerInput: {fileID: 3364670736458685677}
   m_camera: {fileID: 8164765926330484681}
   m_spriteRenderer: {fileID: 5504781652266454827}
@@ -266,7 +267,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}

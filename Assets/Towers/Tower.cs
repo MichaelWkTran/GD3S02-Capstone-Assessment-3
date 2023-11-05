@@ -4,15 +4,105 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Canvas m_buttonPrompt;
+    [SerializeField] Canvas m_minigame;
+    [SerializeField] ParticleSystem m_completedParticles;
+    List<Player> m_playersInRange = new List<Player>();
+    Player m_interactingPlayer;
+    bool m_isInteracting;
+
+    public Player m_InteractingPlayer
     {
-        
+        get { return m_interactingPlayer; }
+        set
+        {
+            //Set interacting player back to default
+            if (value == null) m_interactingPlayer.m_state = Player.PlayerState.Default;
+            
+            //Set interacting player
+            m_interactingPlayer = value;
+            
+            //Show minigame UI
+            m_minigame.gameObject.SetActive(m_interactingPlayer != null);
+            
+            //Set player to the interacting state
+            if (m_interactingPlayer != null)
+            {
+                m_buttonPrompt.gameObject.SetActive(false);
+                m_interactingPlayer.m_state = Player.PlayerState.TowerRestoring;
+            }
+
+            //Set Is Interacting
+            m_isInteracting = (m_interactingPlayer != null);
+        }
     }
 
-    // Update is called once per frame
+    void OnTriggerEnter2D(Collider2D _col)
+    {
+        if (!enabled) return;
+
+        //Check whether the tower does not have a player interacting it
+        if (m_InteractingPlayer != null) return;
+
+        //Get player from collider and check its validity
+        Player collidingPlayer = _col.GetComponent<Player>();
+        if (collidingPlayer == null) return;
+
+        //Add the player to the in range list
+        m_playersInRange.Add(collidingPlayer);
+
+        //Show button prompt
+        m_buttonPrompt.gameObject.SetActive(true);
+    }
+
+    void OnTriggerExit2D(Collider2D _col)
+    {
+        if (!enabled) return;
+
+        //Get player from collider and check its validity
+        Player collidingPlayer = _col.GetComponent<Player>();
+        if (collidingPlayer == null) return;
+
+        //Remove the player in range list
+        m_playersInRange.Remove(collidingPlayer);
+
+        //Hide button prompt if there are no players near the tower
+        if (m_playersInRange.Count <= 0) m_buttonPrompt.gameObject.SetActive(false);
+    }
+
     void Update()
     {
-        
+        //Failsafe to ensure the UI gets disabled when the interacting player is destroyed (Such as when killed)
+        if (m_isInteracting && m_InteractingPlayer == null) m_InteractingPlayer = null;
+
+        //Open the minigame when the player interacts with it
+        if (m_InteractingPlayer == null)
+        {
+            foreach (Player player in m_playersInRange)
+            {
+                if (player.m_interactAction.triggered == false) continue;
+                m_InteractingPlayer = player;
+
+                break;
+            }
+        }
+        //Cancel out of the minigame
+        else
+        {
+            if (m_InteractingPlayer.m_cancelAction.triggered)
+            {
+                m_interactingPlayer.m_state = Player.PlayerState.Default;
+                m_interactingPlayer = null;
+                m_minigame.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void OnCompleted()
+    {
+        m_InteractingPlayer = null;
+        enabled = false;
+        m_completedParticles.Play();
+        GameMode.m_current.OnTowerCompleted(this);
     }
 }

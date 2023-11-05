@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public uint m_playerIndex;
     float m_maxHealth = 100.0f;
     float m_health = 100.0f;
-    PlayerState m_state;
+    public PlayerState m_state;
     public float m_Health
     {
         get {  return m_health; }
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         m_interactAction = m_playerInput.actions["Interact"];
         m_cancelAction = m_playerInput.actions["Cancel"];
 
-        foreach(var s in InputSystem.devices)
+        foreach (var s in InputSystem.devices)
         {
             Debug.Log(s.name);
             Debug.Log(s.deviceId);
@@ -90,8 +90,6 @@ public class Player : MonoBehaviour
 
     void LateUpdate()
     {
-        if (m_state != PlayerState.Default) return;
-
         //Flip Character
         if (Mathf.Abs(m_rigidbody.velocity.x) > 0.01f) m_spriteRenderer.flipX = m_rigidbody.velocity.x <= 0.0f;
         m_animator.SetFloat("Speed", m_rigidbody.velocity.sqrMagnitude);
@@ -143,6 +141,6 @@ public class Player : MonoBehaviour
 
         //Update Gamemode
         GameMode.m_current.m_players.Remove(this);
-        GameMode.m_current.OnPlayerKilled();
+        GameMode.m_current.OnPlayerKilled(this);
     }
 }

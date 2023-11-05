@@ -110,14 +110,16 @@ public class GameMode : MonoBehaviour
         m_towers = new List<Tower>(FindObjectsByType<Tower>(FindObjectsInactive.Include, FindObjectsSortMode.None));
     }
 
-    public void OnPlayerKilled()
+    public void OnPlayerKilled(Player _player)
     {
+        m_players.Remove(_player);
+
         if (m_players.Count > 0) return;
     }
 
-    public void OnTowerCompleted()
+    public void OnTowerCompleted(Tower _tower)
     {
-
+        m_towers.Remove(_tower);
     }
 }
 
