@@ -20,6 +20,8 @@ public class GameMode : MonoBehaviour
     [Header("UI")]
     [SerializeField] RectTransform m_splitScreenHorizontalDivide;
     [SerializeField] RectTransform m_splitScreenVerticalDivide;
+    [SerializeField] RectTransform m_winScreen;
+    [SerializeField] RectTransform m_lostScreen;
 
     [Header("Components")]
     [SerializeField] PlayerInputManager m_playerInputManager;
@@ -112,14 +114,34 @@ public class GameMode : MonoBehaviour
 
     public void OnPlayerKilled(Player _player)
     {
+        //Don't trigger if game mode is disabled
+        if (!enabled) return;
+
+        //Remove player from list
         m_players.Remove(_player);
 
+        //Check whether there are no players remaining
         if (m_players.Count > 0) return;
+
+        //Show Lost Screen
+        enabled = false;
+        m_lostScreen.gameObject.SetActive(true);
     }
 
     public void OnTowerCompleted(Tower _tower)
     {
+        //Don't trigger if game mode is disabled
+        if (!enabled) return;
+
+        //Remove tower from list
         m_towers.Remove(_tower);
+
+        //Check whether there are no players remaining
+        if (m_towers.Count > 0) return;
+
+        //Show Win Screen
+        enabled = false;
+        m_winScreen.gameObject.SetActive(true);
     }
 }
 
