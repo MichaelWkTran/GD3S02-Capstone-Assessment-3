@@ -17,7 +17,11 @@ public class Tower : MonoBehaviour
         set
         {
             //Set interacting player back to default
-            if (value == null) m_interactingPlayer.m_state = Player.PlayerState.Default;
+            if (value == null)
+            {
+                if (m_interactingPlayer) m_interactingPlayer.m_state = Player.PlayerState.Default;
+                if (m_playersInRange.Count > 0) m_buttonPrompt.gameObject.SetActive(true);
+            }
             
             //Set interacting player
             m_interactingPlayer = value;
@@ -101,6 +105,7 @@ public class Tower : MonoBehaviour
     public void OnCompleted()
     {
         m_InteractingPlayer = null;
+        m_buttonPrompt.gameObject.SetActive(false);
         enabled = false;
         m_completedParticles.Play();
         GameMode.m_current.OnTowerCompleted(this);

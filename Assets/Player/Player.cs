@@ -1,5 +1,8 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -18,9 +21,9 @@ public class Player : MonoBehaviour
 
     [Header("Game Mode")]
     public uint m_playerIndex;
-    float m_maxHealth = 100.0f;
-    float m_health = 100.0f;
     public PlayerState m_state;
+    float m_maxHealth = 100.0f;
+    [SerializeField] float m_health = 100.0f;
     public float m_Health
     {
         get {  return m_health; }
@@ -28,8 +31,18 @@ public class Player : MonoBehaviour
         {
             m_health = Mathf.Clamp(value, 0.0f, m_maxHealth);
             if (m_health <= 0.0f) Kill();
+
+            //Update Health UI
+            LeanTween.value(gameObject, m_healthBar.value, m_health, 0.2f).setEaseOutCirc()
+            .setOnUpdate((float _newUIValue) =>
+            {
+                m_healthBar.value = _newUIValue;
+                m_healthBar.fillRect.GetComponent<Image>().color = m_healthBarGradient.Evaluate(m_healthBar.value / m_maxHealth);
+            });
         }
     }
+    bool m_isInDamageInvincibility = false;
+    [SerializeField] float m_damageInvincibilityTime;
 
     [Header("Inputs")]
     [SerializeField] PlayerInput m_playerInput; public PlayerInput m_PlayerInput { get { return m_playerInput; } }
@@ -45,6 +58,18 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer m_spriteRenderer;
     [SerializeField] Animator m_animator;
     [SerializeField] Rigidbody2D m_rigidbody;
+
+    [Header("UI")]
+    [SerializeField] Slider m_healthBar;
+    [SerializeField] Gradient m_healthBarGradient;
+
+    void Awake()
+    {
+        //Set UI
+        m_healthBar.minValue = 0.0f;
+        m_healthBar.maxValue = m_maxHealth;
+        m_healthBar.value = m_health;
+    }
 
     void Start()
     {
@@ -86,6 +111,7 @@ public class Player : MonoBehaviour
         m_rigidbody.velocity = velocity;
 
         if (Keyboard.current.oKey.isPressed) Kill();
+        if (Keyboard.current.pKey.wasPressedThisFrame) OnDamage(10.0f);
     }
 
     void LateUpdate()
@@ -104,14 +130,28 @@ public class Player : MonoBehaviour
         m_animator.SetBool("Attacking", m_shootVector.sqrMagnitude > 0.0f);
     }
 
-    void OnCollisionEnter2D(Collision2D _col)
+    //Damage the player
+    public void OnDamage(float _damage)
     {
-        
-    }
+        //Don't damage the player when in the damage invincibility state
+        if (m_isInDamageInvincibility) return;
 
-    void OnTriggerEnter2D(Collider2D _col)
-    {
-        
+        //Sprite Flash
+        LeanTween.value(gameObject, 0.0f, 1.0f, 0.5f).setEasePunch()
+            .setOnUpdate((float _flashAlpha) => { m_spriteRenderer.material.SetFloat("_FlashAlpha", _flashAlpha); });
+
+        //Damage Player
+        m_Health -= _damage;
+
+        //Set Invincible for a Period of Time
+        m_isInDamageInvincibility = true;
+
+        IEnumerator WaitAndPrint()
+        {
+            yield return new WaitForSeconds(m_damageInvincibilityTime);
+            m_isInDamageInvincibility = false;
+        }
+        StartCoroutine(WaitAndPrint());
     }
 
     //Shoot a projectile

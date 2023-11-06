@@ -23,7 +23,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4700182526815671206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ RectTransform:
   m_Father: {fileID: 8226352414923028632}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0.0000076293945, y: 0}
   m_SizeDelta: {x: -0.0000047683716, y: -5}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5469,7 +5469,6 @@ GameObject:
   - component: {fileID: 6871795232767284930}
   - component: {fileID: 6928214680082849087}
   - component: {fileID: 9033735501898228964}
-  - component: {fileID: 9084552389067487729}
   m_Layer: 0
   m_Name: Button Prompt Canvas
   m_TagString: Untagged
@@ -5597,21 +5596,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9084552389067487729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6349308749906372559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487d5d7de9115ec47a6bf6f31be0f978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_buttonPrompt: {fileID: 8220911449420312117}
-  m_minigame: {fileID: 8220911449420312117}
-  m_completedParticles: {fileID: 0}
 --- !u!1 &6582627532016740569
 GameObject:
   m_ObjectHideFlags: 0
@@ -5735,7 +5719,7 @@ RectTransform:
   m_Father: {fileID: 8226352414923028632}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
