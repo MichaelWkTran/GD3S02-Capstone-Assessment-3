@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -73,17 +74,24 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        m_spriteRenderer.material = GameMode.m_current.m_playerMaterials[m_playerIndex];
+
         m_moveAction = m_playerInput.actions["Move"];
         m_shootVectorAction = m_playerInput.actions["Shoot Vector"];
         m_shootButtonAction = m_playerInput.actions["Shoot Button"];
         m_interactAction = m_playerInput.actions["Interact"];
         m_cancelAction = m_playerInput.actions["Cancel"];
 
-        foreach (var s in InputSystem.devices)
-        {
-            Debug.Log(s.name);
-            Debug.Log(s.deviceId);
-        }
+        //foreach (var s in InputSystem.devices)
+        //{
+        //    Debug.Log(s.name);
+        //    Debug.Log(s.deviceId);
+        //}
+
+        //foreach (InputDevice inputDevice in InputSystem.devices)
+        //{
+        //    foreach inputDevice.wasUpdatedThisFrame
+        //}
     }
 
     void Update()
@@ -161,6 +169,7 @@ public class Player : MonoBehaviour
 
         Rigidbody2D projectile = Instantiate(m_projectile, transform.position + (Vector3.up * m_projectileYOffset), Quaternion.identity);
         projectile.velocity = m_shootVector * m_projectileSpeed;
+        projectile.GetComponent<SpriteRenderer>().color = GameMode.m_current.m_playerColours[m_playerIndex];
         Destroy(projectile.gameObject, m_projectileLifetime);
     }
 

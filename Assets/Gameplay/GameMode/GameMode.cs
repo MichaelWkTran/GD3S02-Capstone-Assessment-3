@@ -17,6 +17,10 @@ public class GameMode : MonoBehaviour
     public Vector2 m_startLocationOrigin;
     public Vector2[] m_startLocations;
 
+    [Header("Player")]
+    public Material[] m_playerMaterials;
+    public Color[] m_playerColours;
+
     [Header("UI")]
     [SerializeField] RectTransform m_splitScreenHorizontalDivide;
     [SerializeField] RectTransform m_splitScreenVerticalDivide;
@@ -42,19 +46,19 @@ public class GameMode : MonoBehaviour
 
     void Start()
     {
-        int numberOfPlayers = GameManager.m_Current.m_playerInputDevices.Count;
+        uint numberOfPlayers = GameManager.m_Current.m_numberOfPlayers;
 
 #if UNITY_EDITOR
         if (m_isDebugEnabled)
         {
             //Set Number of Players
-            numberOfPlayers = (int)Mathf.Min(m_numberOfPlayers, m_startLocations.Length);
+            numberOfPlayers = (uint)Mathf.Min(m_numberOfPlayers, m_startLocations.Length);
         }
 
 #endif
 
         //Spawn Players
-        for (int playerIndex = 0; playerIndex <= m_numberOfPlayers; playerIndex++)
+        for (int playerIndex = 0; playerIndex <= numberOfPlayers; playerIndex++)
         {
             Player spawnedPlayer = Instantiate(m_playerPrefab, m_startLocationOrigin + m_startLocations[playerIndex], Quaternion.identity);
             m_players.Add(spawnedPlayer); spawnedPlayer.m_playerIndex = (uint)playerIndex;

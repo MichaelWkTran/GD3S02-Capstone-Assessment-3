@@ -397,6 +397,16 @@ MonoBehaviour:
   - {x: 0.29999948, y: 0.3000003}
   - {x: -0.30000007, y: -0.3000003}
   - {x: 0.29999948, y: -0.3000003}
+  m_playerMaterials:
+  - {fileID: 2100000, guid: f8994d8141eda2c49b1d7a997d30c4f2, type: 2}
+  - {fileID: 2100000, guid: 8ce682e9a581ebf4188a99b0e2520781, type: 2}
+  - {fileID: 2100000, guid: a70dcd3c2d184474bba940765eeba561, type: 2}
+  - {fileID: 2100000, guid: 6515d2e9121251a46a3144d9018f2b6b, type: 2}
+  m_playerColours:
+  - {r: 0.30980393, g: 0.6431373, b: 0.64705884, a: 1}
+  - {r: 0.7529412, g: 0.08235294, b: 0.08235294, a: 1}
+  - {r: 0.30980393, g: 0.64705884, b: 0.33333334, a: 1}
+  - {r: 0.9254902, g: 0.4745098, b: 0.79607844, a: 1}
   m_splitScreenHorizontalDivide: {fileID: 4191138822586215582}
   m_splitScreenVerticalDivide: {fileID: 308982543774860794}
   m_winScreen: {fileID: 2171439000964222513}
