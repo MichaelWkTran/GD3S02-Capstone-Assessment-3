@@ -73,6 +73,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        m_spriteRenderer.material = GameMode.m_current.m_playerMaterials[m_playerIndex];
+
         m_moveAction = m_playerInput.actions["Move"];
         m_shootVectorAction = m_playerInput.actions["Shoot Vector"];
         m_shootButtonAction = m_playerInput.actions["Shoot Button"];
@@ -161,6 +163,7 @@ public class Player : MonoBehaviour
 
         Rigidbody2D projectile = Instantiate(m_projectile, transform.position + (Vector3.up * m_projectileYOffset), Quaternion.identity);
         projectile.velocity = m_shootVector * m_projectileSpeed;
+        projectile.GetComponent<SpriteRenderer>().color = GameMode.m_current.m_playerColours[m_playerIndex];
         Destroy(projectile.gameObject, m_projectileLifetime);
     }
 
