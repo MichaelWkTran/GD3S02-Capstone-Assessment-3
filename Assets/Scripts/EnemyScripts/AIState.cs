@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class AIState
 {
+    protected Enemy m_thisEnemy;
     protected AIBehaviour m_thisBehaviour;
     protected aiState m_stateEnum;
 
@@ -80,6 +81,7 @@ public class MoveState : AIState
 [System.Serializable]
 public class AttackState : AIState
 {
+    
     public AttackState(AIBehaviour _behaviour) : base(_behaviour, aiState.attacking)
     {
     
