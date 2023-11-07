@@ -42,13 +42,13 @@ public class GameMode : MonoBehaviour
 
     void Start()
     {
-        int numberOfPlayers = GameManager.m_Current.m_playerInputDevices.Count;
+        uint numberOfPlayers = GameManager.m_Current.m_numberOfPlayers;
 
 #if UNITY_EDITOR
         if (m_isDebugEnabled)
         {
             //Set Number of Players
-            numberOfPlayers = (int)Mathf.Min(m_numberOfPlayers, m_startLocations.Length);
+            numberOfPlayers = (uint)Mathf.Min(m_numberOfPlayers, m_startLocations.Length);
         }
 
 #endif

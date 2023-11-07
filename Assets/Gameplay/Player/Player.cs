@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -79,11 +80,16 @@ public class Player : MonoBehaviour
         m_interactAction = m_playerInput.actions["Interact"];
         m_cancelAction = m_playerInput.actions["Cancel"];
 
-        foreach (var s in InputSystem.devices)
-        {
-            Debug.Log(s.name);
-            Debug.Log(s.deviceId);
-        }
+        //foreach (var s in InputSystem.devices)
+        //{
+        //    Debug.Log(s.name);
+        //    Debug.Log(s.deviceId);
+        //}
+
+        //foreach (InputDevice inputDevice in InputSystem.devices)
+        //{
+        //    foreach inputDevice.wasUpdatedThisFrame
+        //}
     }
 
     void Update()
