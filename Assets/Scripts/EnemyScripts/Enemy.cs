@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int m_health;
     [SerializeField] private int m_maxHealth;
     [SerializeField] private AIBehaviour m_thisBehaviour;
+    [SerializeField] private int m_attackPower;
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
