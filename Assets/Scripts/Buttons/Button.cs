@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
 	public void StartGame()
 	{
-		SceneManager.LoadScene ("Select Screen");
+
 	}
 
 	public void BackToMenu()

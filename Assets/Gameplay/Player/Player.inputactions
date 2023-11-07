@@ -307,6 +307,17 @@
                 },
                 {
                     "name": "",
+                    "id": "850fefe1-6d7a-4d77-b473-577508c47ffc",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Game Pad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "eb59d1fc-b72d-413a-8feb-67fd4595682f",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -320,6 +331,17 @@
                     "name": "",
                     "id": "8c474b00-8ae1-4d02-a7c5-ae235422088c",
                     "path": "<DualShockGamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Game Pad",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c451f624-b756-4388-9e5d-8e150beccbe0",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Game Pad",
