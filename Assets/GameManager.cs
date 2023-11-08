@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,8 +19,9 @@ public class GameManager : MonoBehaviour
     }
 
     //Inputs
+    public const int m_maxNumberOfPlayers = 4; //The max number of players currently in the game
     public uint m_numberOfPlayers = 1U; //The number of players currently in the game
-    public List<InputDevice[]> m_playerInputDevices = new List<InputDevice[]>(); //The index of this variable represents
-                                                                                 //the player index with 0 being the first player.
-                                                                                 //The stored Input devices are the devices used by said player.
+    public InputDevice[][] m_playerInputDevices = new InputDevice[m_maxNumberOfPlayers][]; //The index of this variable represents
+                                                                                           //the player index with 0 being the first player.
+                                                                                           //The stored Input devices are the devices used by said player.
 }
