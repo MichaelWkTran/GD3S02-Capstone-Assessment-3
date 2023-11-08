@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
 
         //Damage Player
         m_Health -= _damage;
-
+        SoundManager.Instance.PlaySound(1, 0.6f, gameObject, false, false);
         //Set Invincible for a Period of Time
         m_isInDamageInvincibility = true;
 
@@ -170,6 +170,7 @@ public class Player : MonoBehaviour
         Rigidbody2D projectile = Instantiate(m_projectile, transform.position + (Vector3.up * m_projectileYOffset), Quaternion.identity);
         projectile.velocity = m_shootVector * m_projectileSpeed;
         projectile.GetComponent<SpriteRenderer>().color = GameMode.m_current.m_playerColours[m_playerIndex];
+        SoundManager.Instance.PlaySound(0, 1, gameObject, false, false);
         Destroy(projectile.gameObject, m_projectileLifetime);
     }
 
@@ -184,6 +185,7 @@ public class Player : MonoBehaviour
     {
         //Trigger Death Animation
         m_animator.SetTrigger("Kill");
+        SoundManager.Instance.PlaySound(2, 1, gameObject, false, false);
 
         //Disable Script
         enabled = false;

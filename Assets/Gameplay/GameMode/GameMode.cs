@@ -130,6 +130,7 @@ public class GameMode : MonoBehaviour
         //Show Lost Screen
         enabled = false;
         m_lostScreen.gameObject.SetActive(true);
+        SoundManager.Instance.PlaySound(9, 1, gameObject, false, false);
     }
 
     public void OnTowerCompleted(Tower _tower)
@@ -146,6 +147,7 @@ public class GameMode : MonoBehaviour
         //Show Win Screen
         enabled = false;
         m_winScreen.gameObject.SetActive(true);
+        SoundManager.Instance.PlaySound(8, 1, gameObject, false, false);
     }
 }
 
