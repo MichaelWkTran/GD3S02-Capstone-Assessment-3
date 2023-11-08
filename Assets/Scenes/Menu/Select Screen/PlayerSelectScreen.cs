@@ -4,15 +4,16 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerSelectScreen : MonoBehaviour
 {
     [SerializeField] RectTransform m_selectNumPlayersScreen;
-    [SerializeField] RectTransform m_readyScreen;
 
     [Header("Device Assign Screen")]
     [SerializeField] RectTransform m_deviceAssignScreen;
     [SerializeField] PlayerDeviceSlot[] m_playerDeviceSlots;
+    [SerializeField] UnityEngine.UI.Button m_readyButton;
 
     void Start()
     {
@@ -50,6 +51,12 @@ public class PlayerSelectScreen : MonoBehaviour
 
         //Show Necessary Slots
         for (int i = 0; i < m_playerDeviceSlots.Length; i++) m_playerDeviceSlots[i].gameObject.SetActive(i <= _numPlayers);
+
+        //Disable Confirm Button
+        m_readyButton.interactable = false;
+
+        //Set P1 to Keyboard
+        P1AssignKeyboard();
     }
 
     #endregion
@@ -91,7 +98,23 @@ public class PlayerSelectScreen : MonoBehaviour
         }
     }
 
+    public void EnableReadyButton()
+    {
+        //Show ready button when all players have a controller assigned
+        int availableIndex = ArrayUtility.FindIndex(GameManager.m_Current.m_playerInputDevices, i => i == null);
+        m_readyButton.interactable = availableIndex > GameManager.m_Current.m_numberOfPlayers || availableIndex < 0;
+    }
+
     #region P1 Only Methods
+    void P1AssignKeyboard()
+    {
+        if (Keyboard.current == null || Mouse.current == null) return;
+
+        InputDevice[][] playerInputDevices = GameManager.m_Current.m_playerInputDevices;
+        playerInputDevices[0] = new InputDevice[] { Keyboard.current, Mouse.current };
+        m_playerDeviceSlots[0].m_IsControllerAssigned = true;
+    }
+
     public void P1SwapKeyboardGamepad()
     {
         InputDevice[][] playerInputDevices = GameManager.m_Current.m_playerInputDevices;
@@ -105,8 +128,7 @@ public class PlayerSelectScreen : MonoBehaviour
         //Swap to keyboard
         else
         {
-            playerInputDevices[0] = new InputDevice[] { Keyboard.current, Mouse.current };
-            m_playerDeviceSlots[0].m_IsControllerAssigned = true;
+            P1AssignKeyboard();
         }
     }
 

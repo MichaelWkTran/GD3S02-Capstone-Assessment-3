@@ -412,7 +412,7 @@ MonoBehaviour:
   m_winScreen: {fileID: 2171439000964222513}
   m_lostScreen: {fileID: 6402974392019025293}
   m_playerInputManager: {fileID: 3710588215231601063}
-  m_isDebugEnabled: 1
+  m_isDebugEnabled: 0
   m_isP1UsingKeyboard: 1
   m_numberOfPlayers: 1
 --- !u!81 &4782797676523057468

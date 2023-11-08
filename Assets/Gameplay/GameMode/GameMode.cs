@@ -83,7 +83,7 @@ public class GameMode : MonoBehaviour
             spawnedPlayer.m_PlayerInput.SwitchCurrentControlScheme(GameManager.m_Current.m_playerInputDevices[playerIndex]);
                 
             //Set Camera Viewport for split screen
-            switch (m_numberOfPlayers)
+            switch (numberOfPlayers)
             {
                 //Two Players
                 case 1:
