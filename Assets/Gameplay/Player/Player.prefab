@@ -262,7 +262,6 @@ GameObject:
   - component: {fileID: 4628060752859133120}
   - component: {fileID: 5184324112154802437}
   - component: {fileID: 3364670736458685677}
-  - component: {fileID: 6357155164679232428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -511,14 +510,6 @@ MonoBehaviour:
   m_DefaultActionMap: Overworld
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 8164765926330484681}
---- !u!81 &6357155164679232428
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4665180551401987172}
-  m_Enabled: 1
 --- !u!1 &4952896281434288733
 GameObject:
   m_ObjectHideFlags: 0
