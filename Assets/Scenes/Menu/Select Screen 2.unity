@@ -900,6 +900,7 @@ MonoBehaviour:
   - {fileID: 840571156}
   - {fileID: 819393993}
   - {fileID: 1184282029}
+  m_deviceAssignBackButton: {fileID: 489669763}
   m_readyButton: {fileID: 1725241903}
 --- !u!4 &494721103
 Transform:
@@ -1165,18 +1166,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &685971174 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1826431731423491760, guid: 7c9e193840cf40e49858caf358b4fc15,
-    type: 3}
-  m_PrefabInstance: {fileID: 1834797682}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &819393989 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
@@ -2835,23 +2824,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 500414506668982825, guid: 7c9e193840cf40e49858caf358b4fc15,
-        type: 3}
-      propertyPath: m_iconImage
-      value: 
-      objectReference: {fileID: 685971174}
-    - target: {fileID: 500414506668982825, guid: 7c9e193840cf40e49858caf358b4fc15,
-        type: 3}
-      propertyPath: m_keyboardIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: aa8e3a8bef66a554d9fbdb713dfafb4e,
-        type: 3}
-    - target: {fileID: 500414506668982825, guid: 7c9e193840cf40e49858caf358b4fc15,
-        type: 3}
-      propertyPath: m_controllerIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: 1ddf88cc32fbb3445bddc5d990065a8f,
-        type: 3}
     - target: {fileID: 3379945085268801593, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_IsActive
