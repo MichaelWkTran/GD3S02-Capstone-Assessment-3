@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "dfa58907-3824-4ee8-b3f8-8cd034122d8c",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -296,19 +296,8 @@
                 },
                 {
                     "name": "",
-                    "id": "589d8943-807d-4d23-8a10-2750735fc4f2",
-                    "path": "<DualShockGamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Game Pad",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "850fefe1-6d7a-4d77-b473-577508c47ffc",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Game Pad",
@@ -323,17 +312,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Player 1 Keyboard and Mouse",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8c474b00-8ae1-4d02-a7c5-ae235422088c",
-                    "path": "<DualShockGamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Game Pad",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false

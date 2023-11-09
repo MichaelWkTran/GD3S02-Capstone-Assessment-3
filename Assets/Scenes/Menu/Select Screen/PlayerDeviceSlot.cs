@@ -16,6 +16,7 @@ public class PlayerDeviceSlot : MonoBehaviour
             m_isControllerAssigned = value;
             m_assignedUI.gameObject.SetActive(m_isControllerAssigned);
             m_unassignedUI.gameObject.SetActive(!m_isControllerAssigned);
+            FindAnyObjectByType<PlayerSelectScreen>().EnableReadyButton();
         }
     }
     public uint m_playerIndex = 0U;
