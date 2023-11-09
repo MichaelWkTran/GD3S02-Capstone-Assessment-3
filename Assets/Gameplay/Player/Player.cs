@@ -141,6 +141,8 @@ public class Player : MonoBehaviour
     //Damage the player
     public void OnDamage(float _damage)
     {
+        if (!enabled) return;
+
         //Don't damage the player when in the damage invincibility state
         if (m_isInDamageInvincibility) return;
 
@@ -182,6 +184,8 @@ public class Player : MonoBehaviour
     //Kill The player
     public void Kill()
     {
+        if (!enabled) return;
+
         //Trigger Death Animation
         m_animator.SetTrigger("Kill");
 

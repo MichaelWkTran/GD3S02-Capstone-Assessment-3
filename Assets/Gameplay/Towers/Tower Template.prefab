@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 291416102400022128}
   - component: {fileID: 3987397079837934776}
   - component: {fileID: 7477087048582290854}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Minigame Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 2823977237089950935}
   - component: {fileID: 7994089124518228469}
   - component: {fileID: 6019600007694795202}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 2056817904312722829}
   - component: {fileID: 4287158221674360118}
   - component: {fileID: 4420420896255204897}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tower Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5261,7 +5261,7 @@ GameObject:
   - component: {fileID: 8749713279463783717}
   - component: {fileID: 5050023985104418520}
   - component: {fileID: 6588478278357438211}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Button Prompt Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
