@@ -30,8 +30,10 @@ public class Wolf2 : Enemy2
         //Get the closest player to the enemy
         {
             float currentDistance = float.PositiveInfinity;
-            foreach (Player player in FindObjectsOfType<Player>())
+            foreach (Player player in FindObjectsOfType<Player>(false))
             {
+                if (!player.enabled) continue;
+
                 float distance = Vector2.SqrMagnitude(transform.position - player.transform.position);
                 if (distance >= currentDistance) continue;
 
