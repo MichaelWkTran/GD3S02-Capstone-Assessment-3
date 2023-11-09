@@ -57,7 +57,7 @@ public class PlayerSelectScreen : MonoBehaviour
         m_readyButton.interactable = false;
 
         //Set P1 to Keyboard
-        //P1AssignKeyboard();
+        P1AssignKeyboard();
     }
 
     #endregion
