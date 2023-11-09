@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerDeviceSlot : MonoBehaviour
 {
@@ -20,8 +21,20 @@ public class PlayerDeviceSlot : MonoBehaviour
         }
     }
     public uint m_playerIndex = 0U;
+
+    public void SetControllerIcon()
+    {
+    m_iconImage.sprite = m_controllerIcon;
+    }
+
+    public void SetKeyboardIcon()
+    {
+    m_iconImage.sprite = m_keyboardIcon;
+    }
     
     [SerializeField] RectTransform m_assignedUI;
     [SerializeField] RectTransform m_unassignedUI;
-
+    [SerializeField] Sprite m_controllerIcon;
+    [SerializeField] Sprite m_keyboardIcon;
+    [SerializeField] Image m_iconImage;
 }

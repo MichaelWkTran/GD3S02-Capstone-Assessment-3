@@ -3,6 +3,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -56,7 +57,7 @@ public class PlayerSelectScreen : MonoBehaviour
         m_readyButton.interactable = false;
 
         //Set P1 to Keyboard
-        P1AssignKeyboard();
+        //P1AssignKeyboard();
     }
 
     #endregion
@@ -95,7 +96,14 @@ public class PlayerSelectScreen : MonoBehaviour
             //Record input device
             playerInputDevices[availableIndex] = new InputDevice[] { gamepad };
             m_playerDeviceSlots[availableIndex].m_IsControllerAssigned = true;
+
+            if (availableIndex == 0)
+      {
+        m_playerDeviceSlots [0].SetControllerIcon ();
+      }
         }
+
+        
     }
 
     public void EnableReadyButton()
@@ -103,6 +111,11 @@ public class PlayerSelectScreen : MonoBehaviour
         //Show ready button when all players have a controller assigned
         int availableIndex = ArrayUtility.FindIndex(GameManager.m_Current.m_playerInputDevices, i => i == null);
         m_readyButton.interactable = availableIndex > GameManager.m_Current.m_numberOfPlayers || availableIndex < 0;
+        if (m_readyButton.interactable)
+        {
+            EventSystem eventSystem = FindAnyObjectByType<EventSystem> ();
+            eventSystem.SetSelectedGameObject (m_readyButton.gameObject);
+        }
     }
 
     #region P1 Only Methods
@@ -113,6 +126,7 @@ public class PlayerSelectScreen : MonoBehaviour
         InputDevice[][] playerInputDevices = GameManager.m_Current.m_playerInputDevices;
         playerInputDevices[0] = new InputDevice[] { Keyboard.current, Mouse.current };
         m_playerDeviceSlots[0].m_IsControllerAssigned = true;
+        m_playerDeviceSlots [0].SetKeyboardIcon ();
     }
 
     public void P1SwapKeyboardGamepad()

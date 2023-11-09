@@ -759,10 +759,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 1856963055}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 1725241903}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -814,6 +814,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1965666424}
+        m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
+        m_MethodName: SetSelectedGameObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1856963053}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &489669764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,6 +864,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489669761}
   m_CullTransparentMesh: 1
+--- !u!1 &494721101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494721103}
+  - component: {fileID: 494721102}
+  m_Layer: 0
+  m_Name: Player Select
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &494721102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494721101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf85efccf5f50a644b3740d39e2236b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_selectNumPlayersScreen: {fileID: 1765603732}
+  m_deviceAssignScreen: {fileID: 1730107995}
+  m_playerDeviceSlots:
+  - {fileID: 1631789314}
+  - {fileID: 840571156}
+  - {fileID: 819393993}
+  - {fileID: 1184282029}
+  m_readyButton: {fileID: 1725241903}
+--- !u!4 &494721103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494721101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &504385951
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +999,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1965666427}
+      - m_Target: {fileID: 1765603733}
+        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
+        m_MethodName: SetNumberOfPlayers
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1765603733}
+        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
+        m_MethodName: SetNumberOfPlayers
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 494721102}
         m_TargetAssemblyTypeName: PlayerSelectScreen, Assembly-CSharp
         m_MethodName: ConfirmNumPlayersOnClick
         m_Mode: 3
@@ -943,54 +1031,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1765603733}
-        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
-        m_MethodName: SetNumberOfPlayers
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1765603733}
-        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
-        m_MethodName: SetNumberOfPlayers
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -1125,6 +1165,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &685971174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1826431731423491760, guid: 7c9e193840cf40e49858caf358b4fc15,
+    type: 3}
+  m_PrefabInstance: {fileID: 1834797682}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &819393989 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
@@ -1273,7 +1325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 17.50003}
+  m_AnchoredPosition: {x: 0, y: 17.5}
   m_SizeDelta: {x: -160, y: -124.99994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959144956
@@ -1451,7 +1503,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1965666427}
+      - m_Target: {fileID: 1765603733}
+        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
+        m_MethodName: SetNumberOfPlayers
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1765603733}
+        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
+        m_MethodName: SetNumberOfPlayers
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 494721102}
         m_TargetAssemblyTypeName: PlayerSelectScreen, Assembly-CSharp
         m_MethodName: ConfirmNumPlayersOnClick
         m_Mode: 3
@@ -1459,54 +1535,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1765603733}
-        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
-        m_MethodName: SetNumberOfPlayers
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1765603733}
-        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
-        m_MethodName: SetNumberOfPlayers
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -1746,7 +1774,7 @@ PrefabInstance:
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 375.29572
+      value: 325.00003
       objectReference: {fileID: 0}
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
@@ -1791,7 +1819,7 @@ PrefabInstance:
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -187.64786
+      value: -162.50002
       objectReference: {fileID: 0}
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
@@ -1931,7 +1959,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1965666427}
+      - m_Target: {fileID: 494721102}
         m_TargetAssemblyTypeName: PlayerSelectScreen, Assembly-CSharp
         m_MethodName: P1SwapKeyboardGamepad
         m_Mode: 1
@@ -2027,7 +2055,7 @@ PrefabInstance:
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 375.29572
+      value: 325.00003
       objectReference: {fileID: 0}
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
@@ -2072,7 +2100,7 @@ PrefabInstance:
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -187.64786
+      value: -162.50002
       objectReference: {fileID: 0}
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
@@ -2331,8 +2359,8 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 1856963055}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 489669763}
+    m_SelectOnDown: {fileID: 489669763}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2745,7 +2773,7 @@ PrefabInstance:
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 375.29572
+      value: 325.00003
       objectReference: {fileID: 0}
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
@@ -2790,7 +2818,7 @@ PrefabInstance:
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -187.64786
+      value: -162.50002
       objectReference: {fileID: 0}
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
@@ -2807,6 +2835,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 500414506668982825, guid: 7c9e193840cf40e49858caf358b4fc15,
+        type: 3}
+      propertyPath: m_iconImage
+      value: 
+      objectReference: {fileID: 685971174}
+    - target: {fileID: 500414506668982825, guid: 7c9e193840cf40e49858caf358b4fc15,
+        type: 3}
+      propertyPath: m_keyboardIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: aa8e3a8bef66a554d9fbdb713dfafb4e,
+        type: 3}
+    - target: {fileID: 500414506668982825, guid: 7c9e193840cf40e49858caf358b4fc15,
+        type: 3}
+      propertyPath: m_controllerIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ddf88cc32fbb3445bddc5d990065a8f,
+        type: 3}
     - target: {fileID: 3379945085268801593, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_IsActive
@@ -2816,6 +2861,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P1 Device Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974837796704042191, guid: 7c9e193840cf40e49858caf358b4fc15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2909,7 +2959,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1965666427}
+      - m_Target: {fileID: 494721102}
         m_TargetAssemblyTypeName: PlayerSelectScreen, Assembly-CSharp
         m_MethodName: ConfirmNumPlayersOnClick
         m_Mode: 3
@@ -3005,7 +3055,7 @@ PrefabInstance:
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 375.29572
+      value: 325.00003
       objectReference: {fileID: 0}
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
@@ -3050,7 +3100,7 @@ PrefabInstance:
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -187.64786
+      value: -162.50002
       objectReference: {fileID: 0}
     - target: {fileID: 338105496782029637, guid: 7c9e193840cf40e49858caf358b4fc15,
         type: 3}
@@ -3190,7 +3240,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1965666427}
+      - m_Target: {fileID: 1765603733}
+        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
+        m_MethodName: SetNumberOfPlayers
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1765603733}
+        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
+        m_MethodName: SetNumberOfPlayers
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 494721102}
         m_TargetAssemblyTypeName: PlayerSelectScreen, Assembly-CSharp
         m_MethodName: ConfirmNumPlayersOnClick
         m_Mode: 3
@@ -3198,54 +3272,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1765603733}
-        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
-        m_MethodName: SetNumberOfPlayers
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1765603733}
-        m_TargetAssemblyTypeName: ResetPlayers, Assembly-CSharp
-        m_MethodName: SetNumberOfPlayers
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -3433,7 +3459,6 @@ GameObject:
   - component: {fileID: 1965666425}
   - component: {fileID: 1965666424}
   - component: {fileID: 1965666426}
-  - component: {fileID: 1965666427}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3453,7 +3478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1856963053}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1965666425
@@ -3512,26 +3537,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!114 &1965666427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965666422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf85efccf5f50a644b3740d39e2236b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_selectNumPlayersScreen: {fileID: 1765603732}
-  m_deviceAssignScreen: {fileID: 1730107995}
-  m_playerDeviceSlots:
-  - {fileID: 1631789314}
-  - {fileID: 840571156}
-  - {fileID: 819393993}
-  - {fileID: 1184282029}
-  m_readyButton: {fileID: 1725241903}
 --- !u!1 &2030867832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3809,3 +3814,4 @@ SceneRoots:
   - {fileID: 1730107995}
   - {fileID: 1965666425}
   - {fileID: 19658700}
+  - {fileID: 494721103}
