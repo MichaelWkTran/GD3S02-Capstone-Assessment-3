@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "dfa58907-3824-4ee8-b3f8-8cd034122d8c",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -296,8 +296,8 @@
                 },
                 {
                     "name": "",
-                    "id": "589d8943-807d-4d23-8a10-2750735fc4f2",
-                    "path": "<DualShockGamepad>/buttonSouth",
+                    "id": "850fefe1-6d7a-4d77-b473-577508c47ffc",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Game Pad",
@@ -318,8 +318,8 @@
                 },
                 {
                     "name": "",
-                    "id": "8c474b00-8ae1-4d02-a7c5-ae235422088c",
-                    "path": "<DualShockGamepad>/buttonEast",
+                    "id": "c451f624-b756-4388-9e5d-8e150beccbe0",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Game Pad",

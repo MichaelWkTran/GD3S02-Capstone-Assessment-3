@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,12 +89,28 @@ public class Tower : MonoBehaviour
         //Failsafe to ensure the UI gets disabled when the interacting player is destroyed (Such as when killed)
         if (m_isInteracting && m_InteractingPlayer == null) m_InteractingPlayer = null;
 
+        //Get Inputs
+        bool InteractInput(Player _player)
+        {
+            uint playerIndex = _player.m_playerIndex;
+            return (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
+                Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (GameManager.m_Current.m_playerInputIndex[playerIndex]+1) + "Button0")) :
+                Input.GetKeyDown(KeyCode.E);
+        };
+        bool CancelInput(Player _player)
+        {
+            uint playerIndex = _player.m_playerIndex;
+            return (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
+                Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (GameManager.m_Current.m_playerInputIndex[playerIndex]+1) + "Button1")) :
+                Input.GetKeyDown(KeyCode.Q);
+        };
+
         //Open the minigame when the player interacts with it
         if (m_InteractingPlayer == null)
         {
             foreach (Player player in m_playersInRange)
             {
-                if (player.m_interactAction.triggered == false) continue;
+                if (!InteractInput(player)) continue;
                 m_InteractingPlayer = player;
 
                 break;
@@ -102,7 +119,7 @@ public class Tower : MonoBehaviour
         //Cancel out of the minigame
         else
         {
-            if (m_InteractingPlayer.m_cancelAction.triggered)
+            if (CancelInput(m_interactingPlayer))
             {
                 m_interactingPlayer.m_state = Player.PlayerState.Default;
                 m_interactingPlayer = null;
