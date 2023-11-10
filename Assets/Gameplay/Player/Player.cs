@@ -1,8 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -153,6 +151,18 @@ public class Player : MonoBehaviour
         //Damage Player
         m_Health -= _damage;
 
+        //Vibrate Controller
+        IEnumerator MotorVibration()
+        {
+            Gamepad gamepad = m_playerInput.GetDevice<Gamepad>();
+            if (gamepad == null) yield break;
+
+            gamepad.SetMotorSpeeds(20.0f, 20.0f);
+            yield return new WaitForSeconds(0.15f);
+            gamepad.SetMotorSpeeds(0.0f, 0.0f);
+        }
+        StartCoroutine(MotorVibration());
+        
         //Set Invincible for a Period of Time
         m_isInDamageInvincibility = true;
 

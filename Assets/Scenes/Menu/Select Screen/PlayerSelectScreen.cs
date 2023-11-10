@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -82,7 +81,7 @@ public class PlayerSelectScreen : MonoBehaviour
 
         //Check whether there are any empty slots avalible
         {
-            int availableIndex = ArrayUtility.FindIndex(playerInputDevices, i => i == null);
+            int availableIndex = Array.FindIndex(playerInputDevices, i => i == null);
             if (availableIndex < 0 || availableIndex > GameManager.m_Current.m_numberOfPlayers) return;
         }
 
@@ -93,11 +92,11 @@ public class PlayerSelectScreen : MonoBehaviour
             if (!gamepad.startButton.wasPressedThisFrame) continue;
 
             //Check whether the input device is not already recorded
-            InputDevice[] foundInputDevices = ArrayUtility.Find(playerInputDevices, i => { return (i == null) ? false : i.Contains(gamepad); });
+            InputDevice[] foundInputDevices = Array.Find(playerInputDevices, i => { return (i == null) ? false : i.Contains(gamepad); });
             if (foundInputDevices != null) continue;
 
             //Check whether there are any avalible slots for the new controller
-            int availableIndex = ArrayUtility.FindIndex(playerInputDevices, i => i == null);
+            int availableIndex = Array.FindIndex(playerInputDevices, i => i == null);
             if (availableIndex < 0) continue;
 
             //Record input device
@@ -109,7 +108,7 @@ public class PlayerSelectScreen : MonoBehaviour
     public void EnableReadyButton()
     {
         //Show ready button when all players have a controller assigned
-        int availableIndex = ArrayUtility.FindIndex(GameManager.m_Current.m_playerInputDevices, i => i == null);
+        int availableIndex = Array.FindIndex(GameManager.m_Current.m_playerInputDevices, i => i == null);
         m_readyButton.interactable = availableIndex > GameManager.m_Current.m_numberOfPlayers || availableIndex < 0;
         
         //Select the ready button
@@ -132,7 +131,7 @@ public class PlayerSelectScreen : MonoBehaviour
         InputDevice[][] playerInputDevices = GameManager.m_Current.m_playerInputDevices;
 
         //Swap to gamepad
-        if (playerInputDevices[0] != null && ArrayUtility.Find(playerInputDevices[0], i => i as Keyboard != null) != null)
+        if (playerInputDevices[0] != null && Array.Find(playerInputDevices[0], i => i as Keyboard != null) != null)
         {
             playerInputDevices[0] = null;
             m_playerDeviceSlots[0].m_IsControllerAssigned = false;

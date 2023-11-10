@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 723600986283678556}
   - component: {fileID: 7792580420503020337}
   - component: {fileID: 7203991157546378896}
+  - component: {fileID: 8591510330932978255}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -221,6 +222,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8591510330932978255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5590956588786642250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 3755979744357953704
+  updateError: 1
+  checkTime: 0.2
 --- !u!1 &6721252856846803895
 GameObject:
   m_ObjectHideFlags: 0
