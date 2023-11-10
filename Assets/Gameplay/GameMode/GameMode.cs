@@ -112,7 +112,7 @@ public class GameMode : MonoBehaviour
         }
 
         //Get Towers
-        m_towers = new List<Tower>(FindObjectsByType<Tower>(FindObjectsInactive.Include, FindObjectsSortMode.None));
+        m_towers = new List<Tower>(FindObjectsOfType<Tower>());
     }
 
     public void OnPlayerKilled(Player _player)

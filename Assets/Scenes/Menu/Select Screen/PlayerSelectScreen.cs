@@ -19,7 +19,7 @@ public class PlayerSelectScreen : MonoBehaviour
 
     void Start()
     {
-        m_eventSystem = FindAnyObjectByType<EventSystem>();
+        m_eventSystem = FindObjectOfType<EventSystem>();
 
         #region Device Assign Screen
         //Setup Device Slot
