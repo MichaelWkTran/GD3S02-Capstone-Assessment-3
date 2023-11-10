@@ -3,7 +3,6 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 public class PlayerSelectScreen : MonoBehaviour
 {
@@ -26,9 +25,9 @@ public class PlayerSelectScreen : MonoBehaviour
         for (int i = 0; i < GameManager.m_maxNumberOfPlayers; i++) m_playerDeviceSlots[i].m_playerIndex = (uint)i;
 
         //Automatically set player 1 to use keyboard
-        if (Keyboard.current != null && Mouse.current != null && GameManager.m_Current.m_playerInputDevices[0] == null)
+        if (GameManager.m_Current.m_playerInputIndex[0] == -1)
         {
-            GameManager.m_Current.m_playerInputDevices[0] = new InputDevice[] { Keyboard.current, Mouse.current };
+            GameManager.m_Current.m_playerInputIndex[0] = 4;
             m_playerDeviceSlots[0].m_IsControllerAssigned = true;
         }
 
@@ -39,11 +38,8 @@ public class PlayerSelectScreen : MonoBehaviour
     {
         if (m_deviceAssignScreen.gameObject.activeSelf)
         {
-            foreach (Gamepad gamepad in Gamepad.all)
-            {
-                //Exit Device Assign Screen when pressing the cancel button on the gamepad
-                if (gamepad.buttonEast.wasPressedThisFrame) m_deviceAssignBackButton.onClick.Invoke();
-            }
+            //Exit Device Assign Screen when pressing the cancel button on the gamepad
+            if (Input.GetKeyDown("joystick button 1")) m_deviceAssignBackButton.onClick.Invoke();
             
             //Detect new controllers to assign to players
             DetectPlayerControllers();
@@ -55,7 +51,7 @@ public class PlayerSelectScreen : MonoBehaviour
     {
         //Set Number of Players
         GameManager.m_Current.m_numberOfPlayers = (uint)_numPlayers;
-        GameManager.m_Current.m_playerInputDevices = new InputDevice[GameManager.m_maxNumberOfPlayers][];
+        GameManager.ClearPlayerInputIndex();
         foreach (PlayerDeviceSlot deviceSlot in m_playerDeviceSlots) deviceSlot.m_IsControllerAssigned = false;
 
         //Show and Hide Screens
@@ -77,30 +73,25 @@ public class PlayerSelectScreen : MonoBehaviour
     #region Device Assign Screen
     public void DetectPlayerControllers()
     {
-        InputDevice[][] playerInputDevices = GameManager.m_Current.m_playerInputDevices;
+        int[] playerInputDevices = GameManager.m_Current.m_playerInputIndex;
 
         //Check whether there are any empty slots avalible
-        {
-            int availableIndex = Array.FindIndex(playerInputDevices, i => i == null);
-            if (availableIndex < 0 || availableIndex > GameManager.m_Current.m_numberOfPlayers) return;
-        }
-
+        if (!playerInputDevices.Contains(-1)) return;
+        
         //Search all Gamepads
-        foreach (Gamepad gamepad in Gamepad.all)
+        for (int gamepadIndex = 0; gamepadIndex < 4; gamepadIndex++)
         {
-            //Check whether there are any inputs detected from the device
-            if (!gamepad.startButton.wasPressedThisFrame) continue;
-
+            //Check whether the player pressed the start button of the gamepad
+            if (!Input.GetKey((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (gamepadIndex+1) + "Button7"))) continue;
             //Check whether the input device is not already recorded
-            InputDevice[] foundInputDevices = Array.Find(playerInputDevices, i => { return (i == null) ? false : i.Contains(gamepad); });
-            if (foundInputDevices != null) continue;
+            if (playerInputDevices.Contains(gamepadIndex)) continue;
 
             //Check whether there are any avalible slots for the new controller
-            int availableIndex = Array.FindIndex(playerInputDevices, i => i == null);
+            int availableIndex = Array.FindIndex(playerInputDevices, i => i == -1);
             if (availableIndex < 0) continue;
 
             //Record input device
-            playerInputDevices[availableIndex] = new InputDevice[] { gamepad };
+            playerInputDevices[availableIndex] = gamepadIndex;
             m_playerDeviceSlots[availableIndex].m_IsControllerAssigned = true;
         }
     }
@@ -108,7 +99,7 @@ public class PlayerSelectScreen : MonoBehaviour
     public void EnableReadyButton()
     {
         //Show ready button when all players have a controller assigned
-        int availableIndex = Array.FindIndex(GameManager.m_Current.m_playerInputDevices, i => i == null);
+        int availableIndex = Array.FindIndex(GameManager.m_Current.m_playerInputIndex, i => i == -1);
         m_readyButton.interactable = availableIndex > GameManager.m_Current.m_numberOfPlayers || availableIndex < 0;
         
         //Select the ready button
@@ -118,22 +109,20 @@ public class PlayerSelectScreen : MonoBehaviour
     #region P1 Only Methods
     void P1AssignKeyboard()
     {
-        if (Keyboard.current == null || Mouse.current == null) return;
-
-        InputDevice[][] playerInputDevices = GameManager.m_Current.m_playerInputDevices;
-        playerInputDevices[0] = new InputDevice[] { Keyboard.current, Mouse.current };
+        int[] playerInputDevices = GameManager.m_Current.m_playerInputIndex;
+        playerInputDevices[0] = 4;
         m_playerDeviceSlots[0].m_IsControllerAssigned = true;
         m_playerDeviceSlots[0].SetKeyboardIcon();
     }
 
     public void P1SwapKeyboardGamepad()
     {
-        InputDevice[][] playerInputDevices = GameManager.m_Current.m_playerInputDevices;
+        int[] playerInputDevices = GameManager.m_Current.m_playerInputIndex;
 
         //Swap to gamepad
-        if (playerInputDevices[0] != null && Array.Find(playerInputDevices[0], i => i as Keyboard != null) != null)
+        if (playerInputDevices[0] >= 4)
         {
-            playerInputDevices[0] = null;
+            playerInputDevices[0] = -1;
             m_playerDeviceSlots[0].m_IsControllerAssigned = false;
             m_playerDeviceSlots[0].SetControllerIcon();
         }

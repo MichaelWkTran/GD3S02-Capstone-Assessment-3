@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 #if UNITY_PS4
@@ -31,8 +32,13 @@ public class MashingSystem : MonoBehaviour
     {
         if (m_tower.m_InteractingPlayer == null) return;
 
-        bool holdButtonInput = m_tower.m_InteractingPlayer.m_interactAction.IsPressed();
-        bool pressButtonInput = m_tower.m_InteractingPlayer.m_interactAction.triggered;
+        uint playerIndex = m_tower.m_InteractingPlayer.m_playerIndex;
+        bool holdButtonInput = (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
+            Input.GetKey((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (GameManager.m_Current.m_playerInputIndex[playerIndex]+1) + "Button0")) : 
+            Input.GetKey(KeyCode.E);
+        bool pressButtonInput = (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
+            Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (GameManager.m_Current.m_playerInputIndex[playerIndex] + 1) + "Button0")) :
+            Input.GetKeyDown(KeyCode.E);
 
 #if UNITY_PS4
     if (PS4Input.PadIsConnected(0))

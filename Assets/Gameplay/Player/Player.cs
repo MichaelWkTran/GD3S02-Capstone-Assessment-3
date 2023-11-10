@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -44,12 +43,6 @@ public class Player : MonoBehaviour
     [SerializeField] float m_damageInvincibilityTime;
 
     [Header("Inputs")]
-    [SerializeField] PlayerInput m_playerInput; public PlayerInput m_PlayerInput { get { return m_playerInput; } }
-    public InputAction m_moveAction { get; private set; }
-    public InputAction m_shootVectorAction { get; private set; }
-    public InputAction m_shootButtonAction { get; private set; }
-    public InputAction m_interactAction { get; private set; }
-    public InputAction m_cancelAction { get; private set; }
     Vector2 m_shootVector;
 
     [Header("Components")]
@@ -73,51 +66,61 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_spriteRenderer.material = GameMode.m_current.m_playerMaterials[m_playerIndex];
-
-        m_moveAction = m_playerInput.actions["Move"];
-        m_shootVectorAction = m_playerInput.actions["Shoot Vector"];
-        m_shootButtonAction = m_playerInput.actions["Shoot Button"];
-        m_interactAction = m_playerInput.actions["Interact"];
-        m_cancelAction = m_playerInput.actions["Cancel"];
-
-        //foreach (var s in InputSystem.devices)
-        //{
-        //    Debug.Log(s.name);
-        //    Debug.Log(s.deviceId);
-        //}
-
-        //foreach (InputDevice inputDevice in InputSystem.devices)
-        //{
-        //    foreach inputDevice.wasUpdatedThisFrame
-        //}
     }
 
     void Update()
     {
         if (m_state != PlayerState.Default) return;
 
-        //Move Character
-        Vector2 velocity = m_moveAction.ReadValue<Vector2>() * m_speed;
-
-        //Get Shoot Vector
+        //Get Inputs
+        int inputIndex = GameManager.m_Current.m_playerInputIndex[m_playerIndex];
+        #region Vector2 moveInput = new Vector2(Input.GetAxis("leftstick horizontal"), Input.GetAxis("rightstick vertical"));
+        Vector2 moveInput = Vector2.zero;
+        if (inputIndex < 4)
         {
-            m_shootVector = m_shootVectorAction.ReadValue<Vector2>();
-            if (m_shootVector == Vector2.zero && m_shootButtonAction.IsPressed() && m_playerIndex <= 0)
+            moveInput = new Vector2
+            (
+                Input.GetAxisRaw("leftstick" + (inputIndex+1) + "horizontal"),
+                Input.GetAxisRaw("leftstick" + (inputIndex+1) + "vertical")
+            );
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) moveInput += Vector2.right;
+            if (Input.GetKey(KeyCode.LeftArrow)  || Input.GetKey(KeyCode.A)) moveInput -= Vector2.right;
+            if (Input.GetKey(KeyCode.UpArrow)    || Input.GetKey(KeyCode.W)) moveInput += Vector2.up;
+            if (Input.GetKey(KeyCode.DownArrow)  || Input.GetKey(KeyCode.S)) moveInput -= Vector2.up;
+        }
+        moveInput.Normalize();
+
+        #endregion
+        #region m_shootVector = new Vector2(Input.GetAxis("rightstick horizontal"), Input.GetAxis("rightstick vertical"));
+        m_shootVector = Vector2.zero;
+        if (inputIndex < 4)
+        {
+            m_shootVector = new Vector2
+            (
+                Input.GetAxisRaw("rightstick" + (inputIndex + 1) + "horizontal"),
+                Input.GetAxisRaw("rightstick" + (inputIndex + 1) + "vertical")
+            );
+        }
+        else
+        {
+            if (Input.GetMouseButton(0))
             {
-                m_shootVector = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) -
+                m_shootVector = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) -
                     ((Vector2)transform.position + (Vector2.up * m_projectileYOffset));
             }
-            if (m_shootVector != Vector2.zero)
-            {
-                m_shootVector.Normalize();
-            }
         }
+        m_shootVector.Normalize();
+
+        #endregion
+
+        //Move Character
+        Vector2 velocity = moveInput * m_speed;
 
         //Set Velocity
         m_rigidbody.velocity = velocity;
-
-        if (Keyboard.current.oKey.isPressed) Kill();
-        if (Keyboard.current.pKey.wasPressedThisFrame) OnDamage(10.0f);
     }
 
     void LateUpdate()
@@ -152,16 +155,16 @@ public class Player : MonoBehaviour
         m_Health -= _damage;
 
         //Vibrate Controller
-        IEnumerator MotorVibration()
-        {
-            Gamepad gamepad = m_playerInput.GetDevice<Gamepad>();
-            if (gamepad == null) yield break;
-
-            gamepad.SetMotorSpeeds(20.0f, 20.0f);
-            yield return new WaitForSeconds(0.15f);
-            gamepad.SetMotorSpeeds(0.0f, 0.0f);
-        }
-        StartCoroutine(MotorVibration());
+        //IEnumerator MotorVibration()
+        //{
+        //    Gamepad gamepad = m_playerInput.GetDevice<Gamepad>();
+        //    if (gamepad == null) yield break;
+        //
+        //    gamepad.SetMotorSpeeds(20.0f, 20.0f);
+        //    yield return new WaitForSeconds(0.15f);
+        //    gamepad.SetMotorSpeeds(0.0f, 0.0f);
+        //}
+        //StartCoroutine(MotorVibration());
         
         //Set Invincible for a Period of Time
         m_isInDamageInvincibility = true;

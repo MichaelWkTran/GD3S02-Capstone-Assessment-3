@@ -1,11 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.DualShock;
 using UnityEngine.UI;
 
 public class PlayerDeviceSlot : MonoBehaviour
@@ -26,12 +19,12 @@ public class PlayerDeviceSlot : MonoBehaviour
 
     public void SetControllerIcon()
     {
-    m_iconImage.sprite = m_controllerIcon;
+        m_iconImage.sprite = m_controllerIcon;
     }
 
     public void SetKeyboardIcon()
     {
-    m_iconImage.sprite = m_keyboardIcon;
+        m_iconImage.sprite = m_keyboardIcon;
     }
     
     [SerializeField] RectTransform m_assignedUI;

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -27,9 +26,6 @@ public class GameMode : MonoBehaviour
     [SerializeField] RectTransform m_lostScreen;
 
     [Header("Components")]
-    [SerializeField] PlayerInputManager m_playerInputManager;
-    public PlayerInputManager m_PlayerInputManager { get { return m_playerInputManager; } }
-
 #if UNITY_EDITOR
     [Header("Debug")]
     [SerializeField] bool m_isDebugEnabled;
@@ -62,26 +58,6 @@ public class GameMode : MonoBehaviour
             Player spawnedPlayer = Instantiate(m_playerPrefab, m_startLocationOrigin + m_startLocations[playerIndex], Quaternion.identity);
             m_players.Add(spawnedPlayer); spawnedPlayer.m_playerIndex = (uint)playerIndex;
 
-            //Set Inputs
-#if UNITY_EDITOR
-            if (m_isDebugEnabled)
-            {
-                //Use Keyboard
-                if (playerIndex == 0U && m_isP1UsingKeyboard)
-                    spawnedPlayer.m_PlayerInput.SwitchCurrentControlScheme
-                        (Keyboard.current, Mouse.current);
-                
-                //Use Gamepad
-                else if (Gamepad.all.ToArray().Length > playerIndex)
-                    spawnedPlayer.m_PlayerInput.SwitchCurrentControlScheme
-                        (Gamepad.all[playerIndex - (m_isP1UsingKeyboard ? 1 : 0)]);
-            }
-            else
-
-#endif
-
-            spawnedPlayer.m_PlayerInput.SwitchCurrentControlScheme(GameManager.m_Current.m_playerInputDevices[playerIndex]);
-                
             //Set Camera Viewport for split screen
             switch (numberOfPlayers)
             {
