@@ -109,6 +109,7 @@ public class GameMode : MonoBehaviour
         enabled = false;
         m_lostScreen.gameObject.SetActive(true);
         m_eventSystem.SetSelectedGameObject(m_lostScreenFirstSelectButton.gameObject);
+        SoundManager.Instance.PlaySound(9, 1, gameObject, false, false);
     }
 
     public void OnTowerCompleted(Tower _tower)
@@ -126,6 +127,7 @@ public class GameMode : MonoBehaviour
         enabled = false;
         m_winScreen.gameObject.SetActive(true);
         m_eventSystem.SetSelectedGameObject(m_winScreenFirstSelectButton.gameObject);
+        SoundManager.Instance.PlaySound(8, 1, gameObject, false, false);
     }
 }
 

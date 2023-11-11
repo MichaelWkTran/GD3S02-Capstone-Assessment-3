@@ -137,6 +137,8 @@ public class Tower : MonoBehaviour
             m_completedParticles.Play();
         }
         #endregion
+        SoundManager.Instance.PlaySound(4, 1, gameObject, false, false);
+        //SoundManager.Instance.PlaySound(3, 0.6f, gameObject, true, true);
         m_InteractingPlayer = null;
         m_buttonPrompt.gameObject.SetActive(false);
         enabled = false;
