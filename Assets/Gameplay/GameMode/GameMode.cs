@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -20,10 +21,13 @@ public class GameMode : MonoBehaviour
     public Color[] m_playerColours;
 
     [Header("UI")]
+    [SerializeField] EventSystem m_eventSystem;
     [SerializeField] RectTransform m_splitScreenHorizontalDivide;
     [SerializeField] RectTransform m_splitScreenVerticalDivide;
     [SerializeField] RectTransform m_winScreen;
+    [SerializeField] UnityEngine.UI.Button m_winScreenFirstSelectButton;
     [SerializeField] RectTransform m_lostScreen;
+    [SerializeField] UnityEngine.UI.Button m_lostScreenFirstSelectButton;
 
 #if UNITY_EDITOR
     [Header("Debug")]
@@ -104,6 +108,7 @@ public class GameMode : MonoBehaviour
         //Show Lost Screen
         enabled = false;
         m_lostScreen.gameObject.SetActive(true);
+        m_eventSystem.SetSelectedGameObject(m_lostScreenFirstSelectButton.gameObject);
     }
 
     public void OnTowerCompleted(Tower _tower)
@@ -120,6 +125,7 @@ public class GameMode : MonoBehaviour
         //Show Win Screen
         enabled = false;
         m_winScreen.gameObject.SetActive(true);
+        m_eventSystem.SetSelectedGameObject(m_winScreenFirstSelectButton.gameObject);
     }
 }
 
