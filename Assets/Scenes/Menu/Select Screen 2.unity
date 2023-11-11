@@ -901,6 +901,7 @@ MonoBehaviour:
   - {fileID: 819393993}
   - {fileID: 1184282029}
   m_deviceAssignBackButton: {fileID: 489669763}
+  m_swapControllerButton: {fileID: 1345284212}
   m_readyButton: {fileID: 1725241903}
 --- !u!4 &494721103
 Transform:

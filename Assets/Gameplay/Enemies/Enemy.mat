@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy
-  m_Shader: {fileID: -6465566751694194690, guid: df9bb6f1e3e7f7a4aa75005b3916be38,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: 5009cc58a3db2954d9d3794e77e3d2fd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

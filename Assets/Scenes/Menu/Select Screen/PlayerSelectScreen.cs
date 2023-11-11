@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,8 +11,8 @@ public class PlayerSelectScreen : MonoBehaviour
     [SerializeField] RectTransform m_deviceAssignScreen;
     [SerializeField] PlayerDeviceSlot[] m_playerDeviceSlots;
     [SerializeField] UnityEngine.UI.Button m_deviceAssignBackButton;
+    [SerializeField] UnityEngine.UI.Button m_swapControllerButton;
     [SerializeField] UnityEngine.UI.Button m_readyButton;
-
     EventSystem m_eventSystem;
 
     void Start()
@@ -24,12 +23,8 @@ public class PlayerSelectScreen : MonoBehaviour
         //Setup Device Slot
         for (int i = 0; i < GameManager.m_maxNumberOfPlayers; i++) m_playerDeviceSlots[i].m_playerIndex = (uint)i;
 
-        //Automatically set player 1 to use keyboard
-        if (GameManager.m_Current.m_playerInputIndex[0] == -1)
-        {
-            GameManager.m_Current.m_playerInputIndex[0] = 4;
-            m_playerDeviceSlots[0].m_IsControllerAssigned = true;
-        }
+        //Show Swap Controller Button or not
+        m_swapControllerButton.gameObject.SetActive(Input.mousePresent);
 
         #endregion
     }
@@ -114,6 +109,8 @@ public class PlayerSelectScreen : MonoBehaviour
     #region P1 Only Methods
     void P1AssignKeyboard()
     {
+        if (!Input.mousePresent) return;
+
         int[] playerInputDevices = GameManager.m_Current.m_playerInputIndex;
         playerInputDevices[0] = 4;
         m_playerDeviceSlots[0].m_IsControllerAssigned = true;
@@ -122,6 +119,8 @@ public class PlayerSelectScreen : MonoBehaviour
 
     public void P1SwapKeyboardGamepad()
     {
+        if (!Input.mousePresent) return;
+
         int[] playerInputDevices = GameManager.m_Current.m_playerInputIndex;
 
         //Swap to gamepad
