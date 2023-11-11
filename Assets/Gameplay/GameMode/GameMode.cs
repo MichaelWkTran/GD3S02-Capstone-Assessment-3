@@ -25,7 +25,6 @@ public class GameMode : MonoBehaviour
     [SerializeField] RectTransform m_winScreen;
     [SerializeField] RectTransform m_lostScreen;
 
-    [Header("Components")]
 #if UNITY_EDITOR
     [Header("Debug")]
     [SerializeField] bool m_isDebugEnabled;
