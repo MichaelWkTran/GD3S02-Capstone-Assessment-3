@@ -155,17 +155,12 @@ public class Player : MonoBehaviour
         m_Health -= _damage;
 
         //Vibrate Controller
-        //IEnumerator MotorVibration()
-        //{
-        //    Gamepad gamepad = m_playerInput.GetDevice<Gamepad>();
-        //    if (gamepad == null) yield break;
-        //
-        //    gamepad.SetMotorSpeeds(20.0f, 20.0f);
-        //    yield return new WaitForSeconds(0.15f);
-        //    gamepad.SetMotorSpeeds(0.0f, 0.0f);
-        //}
-        //StartCoroutine(MotorVibration());
-        
+#if UNITY_PS4
+        int gamepadSlot = GameManager.m_Current.m_playerInputIndex[m_playerIndex];
+        if (gamepadSlot < 4 && PS4Input.PadIsConnected(gamepadSlot)) PadSetVibration(gamepadSlot, 20, 20);
+
+#endif
+
         //Set Invincible for a Period of Time
         m_isInDamageInvincibility = true;
 
