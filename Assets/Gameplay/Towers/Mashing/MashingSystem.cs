@@ -33,21 +33,23 @@ public class MashingSystem : MonoBehaviour
         if (m_tower.m_InteractingPlayer == null) return;
 
         uint playerIndex = m_tower.m_InteractingPlayer.m_playerIndex;
-        bool holdButtonInput = (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
-            InputUtilities.GetJoystickButton(GameManager.m_Current.m_playerInputIndex[playerIndex], 0) : 
+        int gamepadSlot = GameManager.m_Current.m_playerInputIndex[playerIndex];
+        
+        bool holdButtonInput = (gamepadSlot < 4) ?
+            InputUtilities.GetJoystickButton(gamepadSlot, 0) : 
             Input.GetKey(KeyCode.E);
-        bool pressButtonInput = (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
-            InputUtilities.GetJoystickButtonDown(GameManager.m_Current.m_playerInputIndex[playerIndex], 0) :
+        bool pressButtonInput = (gamepadSlot < 4) ?
+            InputUtilities.GetJoystickButtonDown(gamepadSlot, 0) :
             Input.GetKeyDown(KeyCode.E);
 
 #if UNITY_PS4
-    if (PS4Input.PadIsConnected(0))
-    {
-        Vector3 currentGyro = PS4Input.PadGetLastGyro(0);
-        if ((currentGyro - m_lastGyro).sqrMagnitude > m_minShakeDistance * m_minShakeDistance) pressButtonInput = true;
-        
-        m_lastGyro = currentGyro;
-    }
+        if (gamepadSlot < 4 && PS4Input.PadIsConnected(gamepadSlot))
+        {
+            Vector3 currentGyro = PS4Input.PadGetLastGyro(gamepadSlot);
+            if ((currentGyro - m_lastGyro).sqrMagnitude > m_minShakeDistance * m_minShakeDistance) pressButtonInput = true;
+            
+            m_lastGyro = currentGyro;
+        }
 
 #endif
 
