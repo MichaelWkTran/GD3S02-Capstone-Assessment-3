@@ -94,14 +94,14 @@ public class Tower : MonoBehaviour
         {
             uint playerIndex = _player.m_playerIndex;
             return (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
-                Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (GameManager.m_Current.m_playerInputIndex[playerIndex]+1) + "Button0")) :
+                InputUtilities.GetJoystickButtonDown(GameManager.m_Current.m_playerInputIndex[playerIndex], 0) :
                 Input.GetKeyDown(KeyCode.E);
         };
         bool CancelInput(Player _player)
         {
             uint playerIndex = _player.m_playerIndex;
             return (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
-                Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (GameManager.m_Current.m_playerInputIndex[playerIndex]+1) + "Button1")) :
+                InputUtilities.GetJoystickButtonDown(GameManager.m_Current.m_playerInputIndex[playerIndex], 1) :
                 Input.GetKeyDown(KeyCode.Q);
         };
 

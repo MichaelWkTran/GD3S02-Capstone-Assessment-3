@@ -34,10 +34,10 @@ public class MashingSystem : MonoBehaviour
 
         uint playerIndex = m_tower.m_InteractingPlayer.m_playerIndex;
         bool holdButtonInput = (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
-            Input.GetKey((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (GameManager.m_Current.m_playerInputIndex[playerIndex]+1) + "Button0")) : 
+            InputUtilities.GetJoystickButton(GameManager.m_Current.m_playerInputIndex[playerIndex], 0) : 
             Input.GetKey(KeyCode.E);
         bool pressButtonInput = (GameManager.m_Current.m_playerInputIndex[playerIndex] < 4) ?
-            Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (GameManager.m_Current.m_playerInputIndex[playerIndex] + 1) + "Button0")) :
+            InputUtilities.GetJoystickButtonDown(GameManager.m_Current.m_playerInputIndex[playerIndex], 0) :
             Input.GetKeyDown(KeyCode.E);
 
 #if UNITY_PS4

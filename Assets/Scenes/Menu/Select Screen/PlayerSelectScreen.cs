@@ -76,13 +76,18 @@ public class PlayerSelectScreen : MonoBehaviour
         int[] playerInputDevices = GameManager.m_Current.m_playerInputIndex;
 
         //Check whether there are any empty slots avalible
-        if (!playerInputDevices.Contains(-1)) return;
+        //if (!playerInputDevices.Contains(-1)) return;
+        {
+            int availableIndex = Array.FindIndex(playerInputDevices, i => i == -1);
+            if (availableIndex < 0 || availableIndex > GameManager.m_Current.m_numberOfPlayers) return;
+        }
         
+
         //Search all Gamepads
         for (int gamepadIndex = 0; gamepadIndex < 4; gamepadIndex++)
         {
             //Check whether the player pressed the start button of the gamepad
-            if (!Input.GetKey((KeyCode)Enum.Parse(typeof(KeyCode), "Joystick" + (gamepadIndex+1) + "Button7"))) continue;
+            if (!InputUtilities.GetJoystickButton(gamepadIndex, 7)) continue;
             //Check whether the input device is not already recorded
             if (playerInputDevices.Contains(gamepadIndex)) continue;
 

@@ -484,7 +484,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: leftstick2vertical
     descriptiveName: 
@@ -500,7 +500,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: joystick2_left_trigger
     descriptiveName: 
@@ -516,7 +516,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 2
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: joystick2_right_trigger
     descriptiveName: 
@@ -532,7 +532,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 5
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: rightstick2horizontal
     descriptiveName: 
@@ -548,7 +548,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: rightstick2vertical
     descriptiveName: 
@@ -564,7 +564,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: dpad2_horizontal
     descriptiveName: 
@@ -580,7 +580,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 6
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: dpad2_vertical
     descriptiveName: 
@@ -596,7 +596,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 7
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: leftstick3horizontal
     descriptiveName: 
@@ -612,7 +612,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: leftstick3vertical
     descriptiveName: 
@@ -628,7 +628,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: joystick3_left_trigger
     descriptiveName: 
@@ -644,7 +644,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 2
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: joystick3_right_trigger
     descriptiveName: 
@@ -660,7 +660,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 5
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: rightstick3horizontal
     descriptiveName: 
@@ -676,7 +676,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: rightstick3vertical
     descriptiveName: 
@@ -692,7 +692,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: dpad3_horizontal
     descriptiveName: 
@@ -708,7 +708,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 6
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: dpad3_vertical
     descriptiveName: 
@@ -724,7 +724,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 7
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: leftstick4horizontal
     descriptiveName: 
@@ -740,7 +740,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: leftstick4vertical
     descriptiveName: 
@@ -756,7 +756,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: joystick4_left_trigger
     descriptiveName: 
@@ -772,7 +772,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 2
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: joystick4_right_trigger
     descriptiveName: 
@@ -788,7 +788,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 5
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: rightstick4horizontal
     descriptiveName: 
@@ -804,7 +804,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: rightstick4vertical
     descriptiveName: 
@@ -820,7 +820,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: dpad4_horizontal
     descriptiveName: 
@@ -836,7 +836,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 6
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: dpad4_vertical
     descriptiveName: 
@@ -852,5 +852,5 @@ InputManager:
     invert: 0
     type: 2
     axis: 7
-    joyNum: 1
+    joyNum: 4
   m_UsePhysicalKeys: 1
