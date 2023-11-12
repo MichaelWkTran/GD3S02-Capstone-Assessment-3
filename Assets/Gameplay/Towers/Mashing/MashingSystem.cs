@@ -35,10 +35,10 @@ public class MashingSystem : MonoBehaviour
         uint playerIndex = m_tower.m_InteractingPlayer.m_playerIndex;
         int gamepadSlot = GameManager.m_Current.m_playerInputIndex[playerIndex];
         
-        bool holdButtonInput = (gamepadSlot < 4) ?
+        bool holdButtonInput = (gamepadSlot < 4 && gamepadSlot > -1) ?
             InputUtilities.GetJoystickButton(gamepadSlot, 0) : 
             Input.GetKey(KeyCode.E);
-        bool pressButtonInput = (gamepadSlot < 4) ?
+        bool pressButtonInput = (gamepadSlot < 4 && gamepadSlot > -1) ?
             InputUtilities.GetJoystickButtonDown(gamepadSlot, 0) :
             Input.GetKeyDown(KeyCode.E);
 
