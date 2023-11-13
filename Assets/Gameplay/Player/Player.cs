@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
 
 #endif
 
-        SoundManager.Instance.PlaySound(1, 0.6f, gameObject, false, false);
+        //SoundManager.Instance.PlaySound(1, 0.6f, gameObject, false, false);
 
         //Set Invincible for a Period of Time
         m_isInDamageInvincibility = true;
