@@ -120,7 +120,7 @@ public class Wolf2 : Enemy2
             if (player != null && canAttack)
             {
                 player.OnDamage(m_damage);
-                SoundManager.Instance.PlaySound(5, 0.5f, gameObject, false, false);
+                SoundManager.Instance.PlaySound(5, 0.25f, gameObject, false, false);
                 canAttack = false;
             }
         }
