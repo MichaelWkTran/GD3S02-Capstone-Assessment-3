@@ -20,7 +20,8 @@ public class Wolf2 : Enemy2
     [SerializeField] SpriteRenderer m_spriteRenderer;
     [SerializeField] Animator m_animator;
     [SerializeField] Rigidbody2D m_rigidbody;
-    
+    [SerializeField] CapsuleCollider2D m_collider;
+
     void Start()
     {
         base.Start();
@@ -145,6 +146,7 @@ public class Wolf2 : Enemy2
         m_animator.SetTrigger("Kill");
         Destroy(gameObject, 1.0f);
         enabled = false;
+        m_collider.enabled = false;
         SoundManager.Instance.PlaySound(7, 0.5f, gameObject, false, false);
     }
 }
