@@ -227,6 +227,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &346632716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 346632718}
+  - component: {fileID: 346632717}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &346632717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346632716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ce0def73a2f344b85f64babb8d3e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 343993f0bfd157949b2acd79d723ca97, type: 3}
+  - {fileID: 8300000, guid: 17fe99f42d0651c4887112b9afb550d5, type: 3}
+  - {fileID: 8300000, guid: 0ed3943866f32a645ac6855a0ab562b9, type: 3}
+  - {fileID: 8300000, guid: 52bf9292b867d46418d71087fed9e315, type: 3}
+  - {fileID: 8300000, guid: 267c52270c044e34aa233d7c4f36f5cb, type: 3}
+  - {fileID: 8300000, guid: f6f7fb2b5d4d60b4b917d5e0ddf74de6, type: 3}
+  - {fileID: 8300000, guid: 498a6b7931460034f8b1a5cff25b61a8, type: 3}
+  - {fileID: 8300000, guid: 184769f81f88d634e8c45bc181098f85, type: 3}
+  - {fileID: 8300000, guid: 9000e123a66602b4da1d3040d22836e2, type: 3}
+  - {fileID: 8300000, guid: da456f933732827499824e2dc318d210, type: 3}
+  musicClips:
+  - {fileID: 8300000, guid: 58e81b496e76c2e43acd8503b0232575, type: 3}
+  - {fileID: 8300000, guid: 2355de276d540a94ea393c4e3885293a, type: 3}
+--- !u!4 &346632718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346632716}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &904017580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -833,3 +891,4 @@ SceneRoots:
   - {fileID: 1782719825}
   - {fileID: 1863699093}
   - {fileID: 112036876}
+  - {fileID: 346632718}

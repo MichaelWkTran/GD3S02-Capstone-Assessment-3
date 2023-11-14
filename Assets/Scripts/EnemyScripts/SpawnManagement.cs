@@ -42,7 +42,7 @@ public class SpawnManagement : MonoBehaviour
         List<Vector3> potentialPoints = new List<Vector3>();
         for (int i = 0; i < m_allSpawners.Count; i++)
         {
-            if (!m_allSpawners[i].m_renderer.isVisible && m_allSpawners[i].gameObject.activeInHierarchy)
+            if (!m_allSpawners[i].m_renderer.isVisible && m_allSpawners[i].gameObject.activeInHierarchy && m_allSpawners[i].insideMap)
             {
                 potentialPoints.Add(m_allSpawners[i].transform.position);
             }

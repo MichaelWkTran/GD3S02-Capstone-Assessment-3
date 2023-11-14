@@ -6,10 +6,13 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     public AudioClip[] audioClips;
+    public AudioClip[] musicClips;
 
 
     private void Awake()
     {
+        PlayMusic(1, 0.25f, true);  // play music
+
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -58,5 +61,29 @@ public class SoundManager : MonoBehaviour
 
             audioSource.Play();
         }
+    }
+
+    public void PlayMusic(int _num, float _vol, bool _isLoop)
+    {
+        if (!gameObject.GetComponent<AudioSource>())
+        {
+            gameObject.AddComponent<AudioSource>();
+        }
+        if (musicClips.Length >= _num)
+        {
+            AudioSource musicSource = gameObject.GetComponent<AudioSource>();
+            musicSource.clip = musicClips[_num];
+            musicSource.loop = _isLoop;
+            musicSource.volume = _vol;
+
+            musicSource.Play();
+        }
+    }
+
+    public void StopMusic()
+    {
+        AudioSource musicSource = gameObject.GetComponent<AudioSource>();
+
+        musicSource.Stop();
     }
 }

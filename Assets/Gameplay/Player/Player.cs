@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         int inputIndex = GameManager.m_Current.m_playerInputIndex[m_playerIndex];
         #region Vector2 moveInput = new Vector2(Input.GetAxis("leftstick horizontal"), Input.GetAxis("rightstick vertical"));
         Vector2 moveInput = Vector2.zero;
-        if (inputIndex < 4)
+        if (inputIndex < 4 && inputIndex >= 0)
         {
             moveInput = new Vector2
             (
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         #endregion
         #region m_shootVector = new Vector2(Input.GetAxis("rightstick horizontal"), Input.GetAxis("rightstick vertical"));
         m_shootVector = Vector2.zero;
-        if (inputIndex < 4)
+        if (inputIndex < 4 && inputIndex >= 0)
         {
             m_shootVector = new Vector2
             (
@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
 
 #endif
 
-        SoundManager.Instance.PlaySound(1, 0.6f, gameObject, false, false);
+        //SoundManager.Instance.PlaySound(1, 0.6f, gameObject, false, false);
 
         //Set Invincible for a Period of Time
         m_isInDamageInvincibility = true;
