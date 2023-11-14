@@ -51,6 +51,21 @@ public class GameMode : MonoBehaviour
         {
             //Set Number of Players
             numberOfPlayers = (uint)Mathf.Min(m_numberOfPlayers, m_startLocations.Length);
+
+            if (m_isP1UsingKeyboard)
+            {
+                GameManager.m_Current.m_playerInputIndex[0] = 4;
+                GameManager.m_Current.m_playerInputIndex[1] = 0;
+                GameManager.m_Current.m_playerInputIndex[2] = 1;
+                GameManager.m_Current.m_playerInputIndex[3] = 2;
+            }
+            else
+            {
+                GameManager.m_Current.m_playerInputIndex[0] = 0;
+                GameManager.m_Current.m_playerInputIndex[1] = 1;
+                GameManager.m_Current.m_playerInputIndex[2] = 2;
+                GameManager.m_Current.m_playerInputIndex[3] = 3;
+            }
         }
 
 #endif

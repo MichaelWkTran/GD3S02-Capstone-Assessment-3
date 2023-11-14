@@ -13,6 +13,8 @@ public class Wolf2 : Enemy2
     Path m_path;
     int m_currentWaypoint = 0;
     public bool m_reachedEndOfPath { get; private set; } = false;
+    public bool canAttack;
+    float attackTimer = 1;
 
     [Header("Components")]
     [SerializeField] SpriteRenderer m_spriteRenderer;
@@ -57,6 +59,11 @@ public class Wolf2 : Enemy2
         m_currentWaypoint = 0;
     }
 
+    private void Update()
+    {
+        ResetAttackTimer();
+    }
+
     void FixedUpdate()
     {
         if (m_path == null) return;
@@ -94,6 +101,7 @@ public class Wolf2 : Enemy2
         {
             //Damage Enemy
             m_Health -= 1.0f;
+            SoundManager.Instance.PlaySound(6, 0.5f, gameObject, false, false);
 
             //Sprite Flash
             LeanTween.value(gameObject, 0.0f, 1.0f, 0.5f).setEasePunch()
@@ -109,7 +117,24 @@ public class Wolf2 : Enemy2
         //Damage Player
         {
             Player player = _col.gameObject.GetComponent<Player>();
-            if (player != null) player.OnDamage(m_damage);
+            if (player != null && canAttack)
+            {
+                player.OnDamage(m_damage);
+                SoundManager.Instance.PlaySound(5, 0.25f, gameObject, false, false);
+                canAttack = false;
+            }
+        }
+    }
+
+
+    void ResetAttackTimer()
+    {
+        attackTimer -= Time.deltaTime;
+
+        if (attackTimer <= 0)
+        {
+            canAttack = true;
+            attackTimer = 1;
         }
     }
 
@@ -120,5 +145,6 @@ public class Wolf2 : Enemy2
         m_animator.SetTrigger("Kill");
         Destroy(gameObject, 1.0f);
         enabled = false;
+        SoundManager.Instance.PlaySound(7, 0.5f, gameObject, false, false);
     }
 }
