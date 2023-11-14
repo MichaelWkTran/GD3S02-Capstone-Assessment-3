@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -9,6 +10,8 @@ public class GameMode : MonoBehaviour
 {
     public static GameMode m_current = null;
     [SerializeField] Player m_playerPrefab;
+
+    public Action m_updateUI; 
 
     public List<Player> m_players;
     public List<Tower> m_towers;
@@ -134,6 +137,8 @@ public class GameMode : MonoBehaviour
 
         //Remove tower from list
         m_towers.Remove(_tower);
+
+        m_updateUI?.Invoke ();
 
         //Check whether there are no players remaining
         if (m_towers.Count > 0) return;
