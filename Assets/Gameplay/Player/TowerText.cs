@@ -23,7 +23,7 @@ public class TowerText : MonoBehaviour
 
 	private void DisplayText()
 	{
-		string output = $"{GameMode.m_current.m_towers.Capacity} / {m_maxTowers}";
+		string output = $"{m_maxTowers - GameMode.m_current.m_towers.Count} / {m_maxTowers}";
 
 		m_tower.text = output;
 	}
