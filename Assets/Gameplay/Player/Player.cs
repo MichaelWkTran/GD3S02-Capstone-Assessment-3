@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_PS4
+using UnityEngine.PS4;
+#endif
 
 public class Player : MonoBehaviour
 {
@@ -157,7 +160,7 @@ public class Player : MonoBehaviour
         //Vibrate Controller
 #if UNITY_PS4
         int gamepadSlot = GameManager.m_Current.m_playerInputIndex[m_playerIndex];
-        if (gamepadSlot < 4 && PS4Input.PadIsConnected(gamepadSlot)) PadSetVibration(gamepadSlot, 20, 20);
+        if (gamepadSlot < 4 && PS4Input.PadIsConnected(gamepadSlot)) PS4Input.PadSetVibration(gamepadSlot, 20, 20);
 
 #endif
 
@@ -182,7 +185,7 @@ public class Player : MonoBehaviour
         Rigidbody2D projectile = Instantiate(m_projectile, transform.position + (Vector3.up * m_projectileYOffset), Quaternion.identity);
         projectile.velocity = m_shootVector * m_projectileSpeed;
         projectile.GetComponent<SpriteRenderer>().color = GameMode.m_current.m_playerColours[m_playerIndex];
-        SoundManager.Instance.PlaySound(0, 1, gameObject, false, false);
+        //SoundManager.Instance.PlaySound(0, 1, gameObject, false, false);
         Destroy(projectile.gameObject, m_projectileLifetime);
     }
 

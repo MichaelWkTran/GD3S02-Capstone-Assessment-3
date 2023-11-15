@@ -108,9 +108,11 @@ MonoBehaviour:
   m_damage: 5
   m_seeker: {fileID: 7792580420503020337}
   nextWaypointDistance: 3
+  canAttack: 0
   m_spriteRenderer: {fileID: 4213912746211361513}
   m_animator: {fileID: 723600986283678556}
   m_rigidbody: {fileID: 7203991157546378896}
+  m_collider: {fileID: 6731286351886244151}
 --- !u!70 &6731286351886244151
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

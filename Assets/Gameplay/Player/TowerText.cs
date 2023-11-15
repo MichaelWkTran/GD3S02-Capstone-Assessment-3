@@ -12,7 +12,7 @@ public class TowerText : MonoBehaviour
 	{
 		m_tower = GetComponent<TMP_Text> ();
 
-		m_maxTowers = GameMode.m_current.m_towers.Capacity;
+		m_maxTowers = FindObjectsOfType<Tower>().Length;
 
 		string output = $"0 / {m_maxTowers}";
 
